@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include<string>
+#include <stdlib.h>
 using namespace std;
 class stockexchange{
 string shop,owner,upi_id;
@@ -19,7 +20,7 @@ void stocksinfo(){
 	cout<<"number of items available: ";
 	cin>>itemsno;
 	
-	cout<<"Shri/Shrimati "<<owner<<" please enter your items and their respective details \02\n";
+	cout<<"Shri/Shrimati "<<owner<<" please enter your items and their respective details \n";
 	for(int i=0; i<itemsno;i++){
 		cout<<"name of item "<<i+1<<" :";
         cin>>items[i];
@@ -79,7 +80,7 @@ void newstock(){
 	cin>>n;
 	    for(int i=0; i<itemsno;i++){
 	    if(n==items[i]){
-	       cout<<"\n\n\t the desired item name is     :"<<items[i]<<"\n\t the rate of "<<items[i]<<" is       :"<<itemsrate[i]*0.012<<"$\n\t number of items available is :"<<no[i]<<"\n\n\n";
+	       cout<<" rthe desired item name is :"<<items[i]<<"\n the rate of "<<items[i]<<" is :"<<itemsrate[i]*0.012<<"$\n number of items available is :"<<no[i]<<endl;
 	              nk+=1;
 				  t=i;
                   break;}
@@ -95,7 +96,7 @@ void newstock(){
 	        string nam;
 	        float dar;
 	        int enni;
-	        cout<<"if u wanna change the name of the item enter the new name of item or else'n/a':\n";
+	         cout<<"if u wanna change the name of the item enter the new name of item or else'n/a':\n";
 	        cin>>nam;
 	        if(nam!="n/a"){
             items[t]=nam;
@@ -114,33 +115,22 @@ void newstock(){
 	      }
 	      else{ cout<<"";}
           }
-	  }
-	    
-		  }
+		  }}
 	};
 int main()
-{
+{   int t=1;
 	string decision;
 	stockexchange Krish;
 	Krish.stocksinfo();
-    Krish.stocksmenu();
-    cout<<"1.Helloo there if u want to add new stock please enter 'update' \n2.if u want to review or search for a particular stock enter'review'\n3.to end the program enter'end' :\n";
-   cin>>decision;
-   if(decision=="update"){
-	int num;
-	cout<<"Good!\02 how many number of new stocks u wanna add owner :\n";
-	cin>>num;
-	for(int i=0; i<num; i++)
-	{
-		Krish.newstock();
-	}
-	cout<<"Updated stocks info";
-	Krish.stocksmenu();
-
-   }
-   else if(decision=="review"){
-Krish.reviewstock();
-Krish. stocksmenu();
-   }
+    while(t!=0){
+       cout<<"1.Helloo there if u want to add new stock please enter 'update' \n2.if u want to review the existing stock please enter 'review' \n3.if you want to view the menu please enter 'menu' \n4.if you want to end the process please enter 'exit' \n";
+        cin>>decision;
+        if(decision=="menu"){Krish.stocksmenu();}
+        else if(decision=="review"){Krish.reviewstock();}
+        else if(decision=="update"){Krish.newstock();}
+        else if(decision=="exit"){Krish.stocksmenu();
+		t=0;}
+        else{cout<<"Invalid command..... Please try again";}
+    }
   return 0;
 }
